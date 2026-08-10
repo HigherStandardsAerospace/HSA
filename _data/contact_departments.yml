@@ -1,0 +1,19 @@
+- id: sales
+  label: General Inquiries / Sales
+  endpoint: https://formsubmit.co/sales@higherstandardsaerospace.com
+
+- id: accounting
+  label: Accounting
+  endpoint: https://formsubmit.co/accounting@higherstandardsaerospace.com
+
+- id: business-development
+  label: Business Development
+  endpoint: https://formsubmit.co/john.valencia@higherstandardsaerospace.com
+
+- id: purchasing
+  label: Purchasing
+  endpoint: https://formsubmit.co/gonzalo.ortiz@higherstandardsaerospace.com
+
+- id: quality-assurance
+  label: Quality Assurance
+  endpoint: https://formsubmit.co/john.thomson@higherstandardsaerospace.com

@@ -1,0 +1,13 @@
+<footer>
+  <div class="container">
+    {% if page.show_socials %}
+    <div class="social">
+      <a href="https://www.instagram.com/higherstandardsaerospace/" aria-label="Instagram"><img src="{{ '/assets/images/if_38-instagram_1161953.svg' | relative_url }}" alt=""></a>
+      <a href="https://www.linkedin.com/company/higherstandardsaerospace" aria-label="LinkedIn"><img src="{{ '/assets/images/if_201-LinkedIn_192159.svg' | relative_url }}" alt=""></a>
+      <a href="https://www.facebook.com/higherstandardsaerospace" aria-label="Facebook"><img src="{{ '/assets/images/if_06-facebook_104498.svg' | relative_url }}" alt=""></a>
+    </div>
+    <div class="copyright"><p>© {{ site.time | date: '%Y' }} Higher Standards Aerospace, All Rights Reserved.</p></div>
+    {% endif %}
+  </div>
+</footer>
+

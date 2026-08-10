@@ -1,0 +1,5 @@
+source "https://rubygems.org"
+
+# Compatibility profile for the Ruby 2.6 version included with this Mac.
+gem "github-pages", "228", group: :jekyll_plugins
+gem "nokogiri", "~> 1.13.10"

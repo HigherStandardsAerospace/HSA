@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="{{ site.lang | default: 'en' }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page.title | default: site.title }}</title>
+    <meta name="description" content="{{ page.description | default: site.description | escape }}">
+    {% if page.robots %}<meta name="robots" content="{{ page.robots }}">{% elsif site.preview_mode %}<meta name="robots" content="noindex, nofollow">{% else %}<meta name="robots" content="index, follow, max-image-preview:large">{% endif %}
+    <link rel="canonical" href="{{ page.canonical_url | default: page.url | absolute_url }}">
+    <link rel="icon" href="{{ '/assets/images/cropped-FavIconb-03-32x32.png' | relative_url }}" sizes="32x32">
+    <link rel="icon" href="{{ '/assets/images/cropped-FavIconb-03-192x192.png' | relative_url }}" sizes="192x192">
+    <link rel="apple-touch-icon" href="{{ '/assets/images/cropped-FavIconb-03-180x180.png' | relative_url }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://use.typekit.net" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,500|Roboto:400,500" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.typekit.net/jni6dje.css">
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/static-site.css' | relative_url }}?v={{ site.static_asset_version }}">
+    {% if site.google_tag_id %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_tag_id }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{{ site.google_tag_id }}');
+    </script>
+    {% endif %}
+  </head>
+  <body class="{{ page.body_class }}">
+    {% if page.show_header != false %}{% include header.html %}{% endif %}
+    {{ content }}
+    {% if page.show_footer != false %}{% include footer.html %}{% endif %}
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/static-site.js' | relative_url }}?v={{ site.static_asset_version }}"></script>
+  </body>
+</html>

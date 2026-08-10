@@ -1,0 +1,30 @@
+---
+layout: default
+title: Blog | Higher Standards Aerospace
+description: News and insights from Higher Standards Aerospace.
+permalink: /blog/
+body_class: blog
+show_socials: true
+---
+<main class="blog-page">
+  <div class="container">
+    <div class="blog-page-heading">
+      <h1>Blog</h1>
+      <p>News and insights from Higher Standards Aerospace.</p>
+    </div>
+
+    <div class="blog-grid">
+      {% for post in site.posts %}
+      <article class="blog-card">
+        <a class="blog-card-link" href="{{ post.url | relative_url }}">
+          <img class="blog-card-image" src="{{ post.featured_image | relative_url }}" alt="{{ post.featured_image_alt | default: post.title | escape }}">
+          <div class="blog-card-content">
+            <h2 class="blog-card-title">{{ post.title }}</h2>
+            <time class="blog-card-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%B %-d, %Y' }}</time>
+          </div>
+        </a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</main>

@@ -1,0 +1,25 @@
+<header class="banner{% if page.header_alt %} banner-alt{% endif %}"{% if page.header_alt %} style="background: white;"{% endif %}>
+  <div class="container"{% if page.header_alt %} style="padding-left: 0; padding-right: 0;"{% endif %}>
+    <div class="desktop">
+      <a class="brand" href="{{ '/' | relative_url }}#intro" aria-label="Higher Standards Aerospace home">
+        <img src="{{ page.header_logo | default: '/assets/images/Logo-02.png' | relative_url }}" alt="Higher Standards Aerospace" style="width: 200px; height: auto; padding-top: 15px;">
+      </a>
+      <nav class="nav-primary" aria-label="Primary navigation">
+        <ul class="nav">
+          <li class="menu-item menu-about"><a href="{{ '/' | relative_url }}#about">About</a></li>
+          <li class="menu-item menu-capabilities"><a href="{{ '/' | relative_url }}#capabilities">Capabilities</a></li>
+          <li class="menu-item menu-equipment"><a href="{{ '/' | relative_url }}#facilities">Equipment</a></li>
+          <li class="menu-item menu-certifications"><a href="{{ '/' | relative_url }}#certifications">Certifications</a></li>
+          <li class="menu-item menu-blog"><a href="{{ '/blog/' | relative_url }}"{% if page.url == '/blog/' or page.layout == 'post' %} class="active" aria-current="page"{% endif %}>Blog</a></li>
+          <li class="menu-item menu-contact"><a href="{{ '/' | relative_url }}#contact">Contact</a></li>
+          <li class="menu-item menu-worldwide-network"><a href="{{ '/' | relative_url }}#map">Worldwide Network</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="mobile"{% if page.header_alt %} style="background: white;"{% endif %}>
+      <a class="brand" href="{{ '/' | relative_url }}#intro" aria-label="Higher Standards Aerospace home">
+        <img src="{{ page.header_logo | default: '/assets/images/Logo-02.png' | relative_url }}" alt="Higher Standards Aerospace" style="width: 175px; height: auto; padding-top: 10px;">
+      </a>
+    </div>
+  </div>
+</header>
