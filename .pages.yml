@@ -39,8 +39,7 @@ content:
         type: date
         required: true
         options:
-          time: true
-          format: "yyyy-MM-dd HH:mm:ss xx"
+          format: "yyyy-MM-dd"
       - name: description
         label: Short description
         type: text
