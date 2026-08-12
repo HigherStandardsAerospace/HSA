@@ -1,0 +1,81 @@
+media:
+  - name: blog_images
+    label: Blog images
+    input: assets/images/blog
+    output: /assets/images/blog
+    categories: [image]
+    extensions: [jpg, jpeg, png, webp, gif]
+    rename: safe
+
+content:
+  - name: posts
+    label: Blog posts
+    type: collection
+    path: _posts
+    format: yaml-frontmatter
+    subfolders: false
+    filename:
+      template: "{year}-{month}-{day}-{primary}.md"
+      field: false
+    view:
+      fields: [title, date, featured_image]
+      primary: title
+      sort: [date, title]
+      search: [title, description, body]
+      default:
+        sort: date
+        order: desc
+    operations:
+      create: true
+      rename: false
+      delete: false
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: date
+        label: Publication date
+        type: date
+        required: true
+        options:
+          time: true
+          format: "yyyy-MM-dd HH:mm:ss xx"
+      - name: description
+        label: Short description
+        type: text
+        required: true
+        description: Used by search engines and when the article is shared.
+      - name: featured_image
+        label: Featured image
+        type: image
+        required: true
+        options:
+          media: blog_images
+          rename: safe
+          extensions: [jpg, jpeg, png, webp]
+      - name: featured_image_alt
+        label: Image description
+        type: string
+        required: true
+        description: Briefly describe the image for accessibility.
+      - name: body
+        label: Article content
+        type: rich-text
+        required: true
+        options:
+          format: markdown
+          switcher: false
+          media: blog_images
+          rename: safe
+          extensions: [jpg, jpeg, png, webp]
+
+settings:
+  hide: true
+  content:
+    merge: true
+  commit:
+    identity: user
+    templates:
+      create: "Publish blog post: {name}"
+      update: "Update blog post: {name}"
