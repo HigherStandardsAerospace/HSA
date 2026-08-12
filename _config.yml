@@ -9,6 +9,15 @@ preview_mode: true
 google_tag_id: GT-5DDFDDXQ
 static_asset_version: 20260806-3
 
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      body_class: post
+      show_socials: true
+
 plugins:
   - jekyll-sitemap
 
