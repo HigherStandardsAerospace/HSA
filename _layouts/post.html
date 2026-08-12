@@ -10,7 +10,8 @@ layout: default
       <img class="blog-post-image" src="{{ page.featured_image | relative_url }}" alt="{{ page.featured_image_alt | default: page.title | escape }}">
     </div>
     <div class="blog-post-content">
-      {{ content }}
+      {% capture asset_src %}src="{{ site.baseurl }}/assets/{% endcapture %}
+      {{ content | replace: 'src="/assets/', asset_src }}
     </div>
   </article>
 </main>
