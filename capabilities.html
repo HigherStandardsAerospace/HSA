@@ -1,21 +1,32 @@
 ---
-layout: null
+layout: default
 title: CAPABILITIES – Higher Standards Aerospace
+description: Search the Higher Standards Aerospace repair and overhaul capabilities by part number, component, manufacturer, ATA chapter, or application.
 permalink: /capabilities/
-sitemap: false
+body_class: capabilities
+header_alt: true
+header_logo: /assets/images/HSA-Alternate-Logo-02.png
 ---
-<!doctype html>
-<html lang="{{ site.lang | default: 'en' }}">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="noindex, follow">
-    <meta http-equiv="refresh" content="0; url={{ '/#capabilities' | relative_url }}">
-    <link rel="canonical" href="{{ '/#capabilities' | absolute_url }}">
-    <title>Capabilities – Higher Standards Aerospace</title>
-  </head>
-  <body>
-    <p>Our capabilities search has moved to the <a href="{{ '/#capabilities' | relative_url }}">HSA homepage</a>.</p>
-    <script>window.location.replace({{ '/#capabilities' | relative_url | jsonify }});</script>
-  </body>
-</html>
+<main class="capabilities-page">
+  <div class="capabilities-table-wrap">
+    <div class="capabilities-heading">
+      <h1 style="margin: 0; padding: 0;">CAPABILITIES PN</h1>
+      <input
+        class="capabilities-search"
+        type="search"
+        id="buscador"
+        placeholder="Search..."
+        autocomplete="off"
+        spellcheck="false"
+        aria-label="Search capabilities"
+        aria-describedby="capabilities-table-status">
+    </div>
+    <p
+      class="capabilities-page-status"
+      id="capabilities-table-status"
+      data-capabilities-table-status
+      aria-live="polite"></p>
+    {% include capabilities-table.html %}
+  </div>
+  <button id="backToTopBtn" type="button" aria-label="Back to top">↑</button>
+</main>

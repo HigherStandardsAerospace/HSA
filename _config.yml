@@ -7,7 +7,7 @@ timezone: America/New_York
 permalink: pretty
 preview_mode: true
 google_tag_id: GT-5DDFDDXQ
-static_asset_version: 20260818-1
+static_asset_version: 20260818-2
 
 defaults:
   - scope:

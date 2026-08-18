@@ -127,13 +127,19 @@ header .mobile .brand { display: flex !important; justify-content: center !impor
 .homepage-capabilities-results[hidden] { display: none; }
 
 .homepage-capability-result {
+  display: block;
   padding: 14px 18px 15px;
   border-bottom: 1px solid #dce2e7;
   background: #fff;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 160ms ease;
 }
 
 .homepage-capability-result:last-child { border-bottom: 0; }
-.homepage-capability-result:hover { background: #f4f8fc; }
+.homepage-capability-result:hover { background: #f4f8fc; color: inherit; text-decoration: none; }
+.homepage-capability-result:focus-visible { outline: 3px solid rgba(0, 72, 140, 0.38); outline-offset: -3px; }
 
 .homepage-capability-result-title {
   margin: 0 0 5px;
@@ -164,6 +170,16 @@ header .mobile .brand { display: flex !important; justify-content: center !impor
 
 .homepage-capability-meta strong,
 .homepage-capability-part-numbers strong { font-weight: 500; }
+
+.homepage-capability-view-all {
+  display: inline-block;
+  margin-top: 8px;
+  color: #00488c;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
 
 .homepage-capabilities-empty {
   padding: 22px;
@@ -257,8 +273,9 @@ header .mobile .brand { display: flex !important; justify-content: center !impor
 .capabilities-table-wrap th { background-color: #f2f2f2; }
 .capabilities-table-wrap tr.header { background-color: black; color: white; }
 .capabilities-table-wrap td:nth-child(5) { white-space: nowrap; }
-.capabilities-search { padding: 8px; margin-bottom: 10px; float: right; border: 1px solid lightgrey; }
+.capabilities-search { width: min(360px, 100%); padding: 8px; margin-bottom: 10px; float: right; border: 1px solid lightgrey; box-sizing: border-box; }
 .capabilities-heading { display: flex; justify-content: space-between; }
+.capabilities-page-status { margin: 0 0 12px; color: #5c6670; font-family: eurostile, sans-serif; font-size: 13px; text-align: right; }
 #backToTopBtn { display: none; position: fixed; bottom: 20px; right: 20px; width: 40px; height: 40px; background: #000; color: #fff; border: 0; border-radius: 50%; padding: 10px; cursor: pointer; z-index: 1000; }
 
 .privacy-page { max-width: 960px; margin: 0 auto; padding: 80px 24px; }
@@ -489,5 +506,6 @@ body.post > footer {
 @media (max-width: 600px) {
   .capabilities-search { width: 100%; margin: 0 auto 10px; display: block; float: none; }
   .capabilities-heading { display: block; text-align: center; width: 90%; margin: auto; }
+  .capabilities-page-status { text-align: center; }
   .capabilities-table-wrap { overflow-x: auto; }
 }

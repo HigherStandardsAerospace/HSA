@@ -53,6 +53,7 @@
     var capabilityResults = capabilitySearch.querySelector('.homepage-capabilities-results');
     var capabilityStatus = capabilitySearch.querySelector('.homepage-capabilities-status');
     var capabilitySource = capabilitySearch.getAttribute('data-source');
+    var capabilityPageUrl = capabilitySearch.getAttribute('data-capabilities-url') || '/capabilities/';
     var capabilityContactUrl = capabilitySearch.getAttribute('data-contact-url') || '#contact';
     var capabilityRows = null;
     var capabilityRequest = null;
@@ -174,8 +175,10 @@
       capabilityResults.textContent = '';
 
       groups.forEach(function (group) {
-        var result = document.createElement('article');
+        var result = document.createElement('a');
         result.className = 'homepage-capability-result';
+        result.href = capabilityPageUrl + '?q=' + encodeURIComponent(group.description);
+        result.setAttribute('aria-label', 'View all ' + group.description + ' capabilities');
 
         var title = document.createElement('h5');
         title.className = 'homepage-capability-result-title';
@@ -198,6 +201,11 @@
         appendCapabilityMeta(meta, 'ATA', summarizeCapabilityValues(uniqueCapabilityValues(group.items, 'ata'), 3));
         appendCapabilityMeta(meta, 'Application', summarizeCapabilityValues(uniqueCapabilityValues(group.items, 'application'), 2));
         result.appendChild(meta);
+
+        var viewAll = document.createElement('span');
+        viewAll.className = 'homepage-capability-view-all';
+        viewAll.textContent = 'View all matching parts \u2192';
+        result.appendChild(viewAll);
 
         capabilityResults.appendChild(result);
       });
@@ -296,13 +304,36 @@
 
   var search = document.getElementById('buscador');
   if (search) {
-    search.addEventListener('keyup', function () {
-      var filter = search.value.toUpperCase();
-      var rows = document.querySelectorAll('#miTabla tr');
-      for (var i = 1; i < rows.length; i += 1) {
-        rows[i].style.display = rows[i].textContent.toUpperCase().indexOf(filter) > -1 ? '' : 'none';
+    var tableRows = document.querySelectorAll('#miTabla tr');
+    var tableStatus = document.querySelector('[data-capabilities-table-status]');
+
+    function filterCapabilitiesTable() {
+      var filter = search.value.trim().toUpperCase();
+      var visibleCount = 0;
+
+      for (var i = 1; i < tableRows.length; i += 1) {
+        var isVisible = tableRows[i].textContent.toUpperCase().indexOf(filter) > -1;
+        tableRows[i].style.display = isVisible ? '' : 'none';
+        if (isVisible) { visibleCount += 1; }
       }
-    });
+
+      if (tableStatus) {
+        tableStatus.textContent = filter
+          ? visibleCount + (visibleCount === 1 ? ' matching capability.' : ' matching capabilities.')
+          : (tableRows.length - 1) + ' capabilities available.';
+      }
+    }
+
+    var initialQuery = '';
+    try {
+      initialQuery = new URLSearchParams(window.location.search).get('q') || '';
+    } catch (error) {
+      // The capabilities table still works in browsers without URLSearchParams.
+    }
+
+    if (initialQuery) { search.value = initialQuery; }
+    filterCapabilitiesTable();
+    search.addEventListener('input', filterCapabilitiesTable);
   }
 
   var backToTop = document.getElementById('backToTopBtn');
