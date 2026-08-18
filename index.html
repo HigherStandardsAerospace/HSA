@@ -73,7 +73,38 @@ canonical_url: https://higherstandardsaerospace.com/
           <p class="capabilities" style="text-align: center;">PUMPS // FUEL CONTROLS // FLOW DIVIDERS</p>
         </div>
       </div>
-      <div class="cta-button"><a href="{{ '/capabilities/' | relative_url }}" class="btn btn-primary">LEARN MORE</a></div>
+      <div
+        class="homepage-capabilities-search"
+        data-capabilities-search
+        data-source="{{ '/assets/data/capabilities.json' | relative_url }}"
+        data-contact-url="{{ '/#contact' | relative_url }}">
+        <label class="sr-only" for="homepage-capabilities-query">Search HSA capabilities</label>
+        <div class="homepage-capabilities-search-box">
+          <svg class="homepage-capabilities-search-icon" aria-hidden="true" viewBox="0 0 24 24" focusable="false">
+            <path d="M10.5 4a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13Zm-8.5 6.5a8.5 8.5 0 1 1 15.17 5.28l4.02 4.02-1.4 1.4-4.02-4.02A8.5 8.5 0 0 1 2 10.5Z"></path>
+          </svg>
+          <input
+            class="homepage-capabilities-input"
+            type="search"
+            id="homepage-capabilities-query"
+            placeholder="Search by part number, component, manufacturer, ATA, or application..."
+            autocomplete="off"
+            autocapitalize="none"
+            spellcheck="false"
+            aria-controls="homepage-capabilities-results"
+            aria-describedby="homepage-capabilities-status"
+            aria-expanded="false">
+        </div>
+        <div
+          class="homepage-capabilities-results normal-scroll"
+          id="homepage-capabilities-results"
+          role="region"
+          aria-label="Capability search results"
+          hidden></div>
+        <p class="homepage-capabilities-status" id="homepage-capabilities-status" aria-live="polite">
+          Enter at least two characters to search our capabilities.
+        </p>
+      </div>
     </div>
   </div>
 
