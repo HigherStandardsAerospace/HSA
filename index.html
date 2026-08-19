@@ -175,25 +175,11 @@ canonical_url: https://higherstandardsaerospace.com/
       <div class="row">
         <div class="col-12">
           <div class="wpcf7">
-            <form class="wpcf7-form" data-formsubmit-contact action="{{ site.data.contact_departments.first.endpoint }}" method="POST" accept-charset="UTF-8" aria-label="Contact form">
+            <form class="wpcf7-form" data-formsubmit-contact action="{{ site.data.contact_form.endpoint }}" method="POST" accept-charset="UTF-8" aria-label="Contact form">
               <input type="hidden" name="_subject" value="HSA Website Inquiry">
               <input type="hidden" name="_next" value="{{ '/contact-success/' | absolute_url }}">
               <input type="hidden" name="_template" value="table">
               <input type="hidden" name="_url" value="{{ page.url | absolute_url }}">
-              <div class="row contact-department-row">
-                <div class="col-sm-12">
-                  <p>
-                    <span class="wpcf7-form-control-wrap">
-                      <select class="wpcf7-form-control wpcf7-select" required aria-label="Department" name="department">
-                        <option value="" selected disabled>SELECT DEPARTMENT</option>
-                        {% for department in site.data.contact_departments %}
-                        <option value="{{ department.label }}" data-department-id="{{ department.id }}" data-formsubmit-endpoint="{{ department.endpoint }}">{{ department.label | upcase }}</option>
-                        {% endfor %}
-                      </select>
-                    </span>
-                  </p>
-                </div>
-              </div>
               <div class="row">
                 <div class="col-sm-6"><p><span class="wpcf7-form-control-wrap"><input size="40" maxlength="120" class="wpcf7-form-control wpcf7-text" required autocomplete="name" placeholder="NAME" aria-label="Name" type="text" name="name"></span></p></div>
                 <div class="col-sm-6"><p><span class="wpcf7-form-control-wrap"><input size="40" maxlength="254" class="wpcf7-form-control wpcf7-email wpcf7-text" required autocomplete="email" placeholder="EMAIL" aria-label="Email" type="email" name="email"></span></p></div>
@@ -202,7 +188,6 @@ canonical_url: https://higherstandardsaerospace.com/
                 <div class="col-sm-12">
                   <p><span class="wpcf7-form-control-wrap"><textarea cols="40" rows="7" maxlength="2000" class="wpcf7-form-control wpcf7-textarea" required placeholder="MESSAGE" aria-label="Message" name="message"></textarea></span></p>
                   <p class="contact-form-note">Please do not include payment information, passwords, or sensitive technical data.</p>
-                  <noscript><p class="contact-form-error">JavaScript is required for department routing. You may also use the department email links above.</p></noscript>
                   <p class="static-form-status" data-form-status role="status" aria-live="polite"></p>
                   <p><input class="wpcf7-form-control wpcf7-submit" type="submit" value="Send"></p>
                 </div>

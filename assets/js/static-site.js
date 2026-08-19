@@ -4,30 +4,24 @@
   var form = document.querySelector('[data-formsubmit-contact]');
   if (form) {
     form.addEventListener('submit', function (event) {
-      var departmentSelect = form.elements.department;
-      var selectedOption = departmentSelect.options[departmentSelect.selectedIndex];
-      var endpoint = selectedOption ? selectedOption.getAttribute('data-formsubmit-endpoint') : '';
-      var departmentId = selectedOption ? selectedOption.getAttribute('data-department-id') : '';
+      var endpoint = form.getAttribute('action') || '';
       var status = form.querySelector('[data-form-status]');
       var submitButton = form.querySelector('[type="submit"]');
 
       if (!endpoint || endpoint.indexOf('https://formsubmit.co/') !== 0) {
         event.preventDefault();
-        status.textContent = 'Please select a department before sending your message.';
+        status.textContent = 'The contact form is temporarily unavailable. Please email sales@higherstandardsaerospace.com.';
         status.className = 'static-form-status contact-form-error';
-        departmentSelect.focus();
         return;
       }
 
-      form.action = endpoint;
-      form.elements._subject.value = 'HSA Website Inquiry - ' + selectedOption.value;
       status.textContent = 'Sending your message...';
       status.className = 'static-form-status contact-form-progress';
       submitButton.disabled = true;
       submitButton.value = 'Sending...';
 
       try {
-        window.sessionStorage.setItem('hsaContactSubmissionPending', departmentId || 'contact');
+        window.sessionStorage.setItem('hsaContactSubmissionPending', 'contact');
       } catch (error) {
         // The form still works when browser storage is unavailable.
       }
@@ -37,9 +31,9 @@
   var contactSuccess = document.querySelector('[data-contact-success]');
   if (contactSuccess) {
     try {
-      var submittedDepartment = window.sessionStorage.getItem('hsaContactSubmissionPending');
-      if (submittedDepartment && typeof window.gtag === 'function') {
-        window.gtag('event', 'generate_lead', { method: 'formsubmit', department: submittedDepartment });
+      var contactSubmissionPending = window.sessionStorage.getItem('hsaContactSubmissionPending');
+      if (contactSubmissionPending && typeof window.gtag === 'function') {
+        window.gtag('event', 'generate_lead', { method: 'formsubmit' });
       }
       window.sessionStorage.removeItem('hsaContactSubmissionPending');
     } catch (error) {
