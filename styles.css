@@ -1,0 +1,90 @@
+body {
+    background-color: black;
+    font-family: droid-serif,serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 1px;
+}
+#mainNav .navbar-toggler {
+    color: black;
+}
+#mainNav .navbar-nav>li.nav-item>a.nav-link.active {
+    color: white !important;
+    background: black;
+}
+a {
+    text-decoration: none !important;
+}
+a:hover {
+    color: grey;
+    text-decoration: none
+}
+a.text-dark:hover {
+    color: grey !important;
+}
+.btn-redes {
+    border-radius: 100%;
+    display: inline-flex;
+    width: 3.25rem;
+    height: 3.25rem;
+    font-size: 1.25rem;
+    justify-content: center;
+    align-items: center;
+    border: .125rem solid
+}
+
+.btn-outline-oscuro {
+    border-color: #212529 !important;
+    color: white;
+}
+.btn-outline-oscuro:hover {
+    background-color: white;
+    color: #212529;
+}
+
+.btn-outline-dark {
+    border-color: black !important;
+    color: white;
+}
+.btn-outline-dark:hover {
+    background-color: white;
+    color: black;
+}
+.boton {
+    display: inline-block;
+    width: 150px;
+    height: 50px;
+    padding-left: 20px;
+    background: #000;
+    color: #fff;
+    font-size: 1.2em;
+    text-decoration: none;
+    text-align: center;
+    line-height: 50px;
+    margin: 40px 5px 0;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 12px 20px -10px rgba(0, 0, 0, 0.65);
+    -moz-box-shadow: 0px 12px 20px -10px rgba(0, 0, 0, 0.65);
+    box-shadow: 0px 12px 20px -10px rgba(0, 0, 0, 0.65);
+    transition: box-shadow 0.5s;
+}
+.boton:hover {
+    color: white;
+    -webkit-box-shadow: 0px 0px 20px -10px rgba(0, 0, 0, 0.65);
+    -moz-box-shadow: 0px 0px 20px -10px rgba(0, 0, 0, 0.65);
+    box-shadow: 0px 0px 20px -10px rgba(0, 0, 0, 0.65);
+    transition: box-shadow 0.5s;
+}
+
+a.custom-card, a.custom-card:hover {
+    color: black !important;
+    text-decoration: none !important;
+}
+.card {
+transition: 0.5s all ease-in-out;
+}
+.card:hover {
+  transform: scale(1.03);
+}
