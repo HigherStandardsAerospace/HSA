@@ -46,6 +46,31 @@ ul li, .capabilities { font-family: eurostile, sans-serif !important; font-style
 header .mobile .brand { display: flex !important; justify-content: center !important; float: none; }
 .section.homepage-about img { max-width: 100%; height: auto; }
 
+.homepage-certifications .certification-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.homepage-certifications .certification-logos img {
+  display: block;
+  flex: 0 1 auto;
+  max-width: calc(50% - 8px);
+  height: auto;
+  margin: 0;
+}
+
+@media (min-width: 576px) {
+  .homepage-certifications .row { align-items: stretch; }
+
+  .homepage-certifications .certifications-col-1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 .cta-button { margin-top: 50px; }
 .cta-button .btn {
   font-family: eurostile-extended, sans-serif !important;
