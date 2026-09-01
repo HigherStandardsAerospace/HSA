@@ -7,6 +7,25 @@ body.page-template-page-homepage #fp-nav a:focus-visible {
   outline-offset: 3px;
 }
 
+/* Keep section navigation static on pointer hover. */
+body.page-template-page-homepage #fp-nav span {
+  transition: none;
+}
+
+body.page-template-page-homepage #fp-nav ul li:hover a span {
+  width: 20px !important;
+  height: 2px !important;
+  margin: -2px 0 0 -10px !important;
+  background-color: #333 !important;
+}
+
+body.page-template-page-homepage #fp-nav ul li:hover a.active span {
+  width: 42px !important;
+  height: 2px !important;
+  margin: -2px 0 0 -22px !important;
+  background-color: #00488c !important;
+}
+
 header .desktop nav li.menu-item a {
   font-family: eurostile, sans-serif !important;
   font-style: normal;
