@@ -273,6 +273,7 @@ header .mobile .brand { display: flex !important; justify-content: center !impor
 .contact-form-note { margin: 3px 0; color: #444; font-size: 11px; }
 .static-form-status { min-height: 18px; margin: 4px 0; font-size: 12px; }
 .contact-form-progress { color: #00488c; }
+.contact-form-success { color: #00488c; font-weight: 600; }
 .contact-form-error { color: #a31d1d; }
 
 .contact-result-page {

@@ -3,6 +3,8 @@
 
   var form = document.querySelector('[data-formsubmit-contact]');
   if (form) {
+    var isContactFormSubmitting = false;
+
     form.addEventListener('submit', function (event) {
       var endpoint = form.getAttribute('action') || '';
       var status = form.querySelector('[data-form-status]');
@@ -15,30 +17,55 @@
         return;
       }
 
+      if (!window.fetch || isContactFormSubmitting) {
+        return;
+      }
+
+      event.preventDefault();
+      isContactFormSubmitting = true;
       status.textContent = 'Sending your message...';
       status.className = 'static-form-status contact-form-progress';
       submitButton.disabled = true;
       submitButton.value = 'Sending...';
 
-      try {
-        window.sessionStorage.setItem('hsaContactSubmissionPending', 'contact');
-      } catch (error) {
-        // The form still works when browser storage is unavailable.
-      }
-    });
-  }
+      var formData = new FormData(form);
+      var submission = {};
+      formData.forEach(function (value, key) {
+        submission[key] = value;
+      });
 
-  var contactSuccess = document.querySelector('[data-contact-success]');
-  if (contactSuccess) {
-    try {
-      var contactSubmissionPending = window.sessionStorage.getItem('hsaContactSubmissionPending');
-      if (contactSubmissionPending && typeof window.gtag === 'function') {
-        window.gtag('event', 'generate_lead', { method: 'formsubmit' });
-      }
-      window.sessionStorage.removeItem('hsaContactSubmissionPending');
-    } catch (error) {
-      // The confirmation page does not depend on analytics or browser storage.
-    }
+      window.fetch(endpoint.replace('https://formsubmit.co/', 'https://formsubmit.co/ajax/'), {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(submission)
+      })
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error('The form could not be submitted.');
+          }
+          return response.json();
+        })
+        .then(function () {
+          form.reset();
+          status.textContent = 'Thank you — your message has been submitted.';
+          status.className = 'static-form-status contact-form-success';
+          if (typeof window.gtag === 'function') {
+            window.gtag('event', 'generate_lead', { method: 'formsubmit' });
+          }
+        })
+        .catch(function () {
+          status.textContent = 'Your message could not be sent. Please try again or email sales@hsaero.com.';
+          status.className = 'static-form-status contact-form-error';
+        })
+        .finally(function () {
+          isContactFormSubmitting = false;
+          submitButton.disabled = false;
+          submitButton.value = 'Send';
+        });
+    });
   }
 
   var capabilitySearch = document.querySelector('[data-capabilities-search]');
