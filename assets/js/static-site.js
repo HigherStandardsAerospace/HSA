@@ -10,7 +10,7 @@
 
       if (!endpoint || endpoint.indexOf('https://formsubmit.co/') !== 0) {
         event.preventDefault();
-        status.textContent = 'The contact form is temporarily unavailable. Please email sales@higherstandardsaerospace.com.';
+        status.textContent = 'The contact form is temporarily unavailable. Please email sales@hsaero.com.';
         status.className = 'static-form-status contact-form-error';
         return;
       }

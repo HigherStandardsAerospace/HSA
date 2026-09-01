@@ -5,7 +5,7 @@ baseurl: ""
 lang: en
 timezone: America/New_York
 permalink: pretty
-preview_mode: true
+preview_mode: false
 google_tag_id: GT-5DDFDDXQ
 static_asset_version: 20260819-1
 
